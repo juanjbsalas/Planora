@@ -1,0 +1,22 @@
+.navbar-custom {
+    height: 136px;
+}
+
+.h1-container {
+    height: calc(100vh - 136px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.h1-container a {
+    background-color: #0077CC;
+    margin-top: 10px;
+}
+
+.h1-container a:hover {
+    background-color: #005FA3;
+}
+
+/* Keep styliong navbar */
