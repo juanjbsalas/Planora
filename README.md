@@ -2,6 +2,8 @@
 
 **Global Voyage** is a modern, user-centric travel website designed to inspire adventure and simplify trip planning. Whether you're dreaming of your next getaway or looking to explore travel products, Global Voyage provides destination details, contact resources, and an intuitive user interface.
 
+Checkout out Global Voyage! 👉 [https://juanjbsalas.github.io/Global-Voyage/](https://juanjbsalas.github.io/Global-Voyage/)
+
 ---
 
 ## 🚀 Features
