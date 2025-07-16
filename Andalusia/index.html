@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+
+    <meta name="viewport" content="width=device-width,    initial-scale=1.0">
+    <title>Global Voyage</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- CSS -->
+     <link rel="stylesheet" href="app.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sriracha&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Navbar Here -->
+    <nav class="bg-gray-100 px-8 py-7">
+        <div class="flex justify-between items-center">
+            <a href="#" class="text-5xl font-bold z-60 tangerine-bold">Global Voyage</a>
+            <!-- <img src="" alt=""> -->
+            <div class="hidden md:flex space-x-4">
+                <a href="https://juanjbsalas.github.io/Global-Voyage/" class="hover:bg-[#005FA3] px-3 py-2 rounded">Home</a>
+                <a href="#" class="hover:bg-[#005FA3] px-3 py-2 rounded">Destinations</a>
+                <a href="https://juanjbsalas.github.io/Global-Voyage/shop" class="hover:bg-[#005FA3] px-3 py-2 rounded">Shop</a>
+                <a href="https://juanjbsalas.github.io/Global-Voyage/contact" class="hover:bg-[#005FA3] px-3 py-2 rounded">Contact</a>
+            </div>
+            <div class="hidden md:inline-block">
+                <a href="#" class="px-4 py-2">
+                    <i class="fa fa-phone"></i>
+                </a>
+            </div>
+            <!-- Hamburguer Menu -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-black">
+                    <i id="menu-icon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile View! -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-50 flex flex-col items-center justify-center bg-opacity-90 md:hidden bg-gray-100 w-1/2 h-1/3 float-end mt-2 me-2 py-4 rounded-md shadow-lg " >
+        <div class="flex flex-col items-center text-center text-black space-y-4 px-4 py-2">
+            <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded nav-link">Home</a>
+
+
+
+            <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded nav-link">Destinations<a>
+            <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded nav-link">Shop</a>
+            <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded nav-link">Contact</a>
+        </div>
+    </div>    
+    <script>
+        const toggleButton = document.getElementById('menu-toggle');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        toggleButton.addEventListener('click', function(){
+            mobileMenu.classList.toggle('hidden');
+
+            if(menuIcon.classList.contains('fa-bars')) {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    </script>
+    <!-- Nav Bar ends here -->
+    <main>
+        
+        <!--~~~~~~~~~~~~~~~ Services ~~~~~~~~~~~~~~~-->
+        <div>
+<section class="bg-white lg:grid lg:h-screen lg:place-content-center">
+  <div
+    class="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32"
+  >
+    <div class="max-w-prose text-left">
+      <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl">
+        Explore the world with us and 
+
+
+        <strong class="text-blue-600"> Experience </strong>
+        Andalusia
+      </h1>
+
+      <p class="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
+        Discover the rich culture, stunning landscapes, and delicious cuisine of Andalusia with our expertly crafted tours.
+      </p>
+
+      <div class="mt-4 flex gap-4 sm:mt-6">
+        <a
+          class="inline-block rounded border border-blue-600 bg-blue-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-indigo-700"
+          href="#"
+        >
+          Book Now
+        </a>
+
+         <a
+          class="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
+          href="#"
+        >
+          Learn More
+        </a>
+      </div>
+
+    </div>
+
+   <img src="andrea-leopardi-xErQKx_EmhQ-unsplash.jpg" alt=" de Sevilla" class="object-contain md:object-cover">
+     
+  </div>
+</section>
+ <!--~~~~~~~~~~~~~~~~~ Locations ~~~~~~~~~~~~~~~~~-->
+<div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+              <h2 class="text-3xl font-bold mb-4">Notable locations</h2>
+              <p class="text-gray-600">Explore the beautiful landmarks in Andalusia</p>
+            </div>
+ <div class="grid md:grid-cols-2 gap-8 my-12">
+  <div
+    class="mx-auto h-80 max-w-lg overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg"
+    style="background-image:url('joan-oger-ZK_v7Uc7sqQ-unsplash.jpg');">
+    <div class="mt-40">
+      <div class="bg-white p-4 sm:p-8">
+        <div class="font-inter text-2xl font-extrabold tracking-tight text-black">
+          Seville's wooden umbrella.
+        </div>
+        <div class="mt-1 text-sm font-medium text-slate-500">
+          Adalusian Wonder.
+        </div>
+        <p class="mt-4 leading-7 text-slate-500">
+          The Metropol Parasol, also known as "Las Setas de la Encarnación," is a stunning architectural marvel located in the heart of Seville, Spain. This wooden structure, designed by Jürgen Mayer, is a modern addition to the city's historic landscape, offering a unique blend of contemporary design and traditional Andalusian culture.
+        </p>
+        <p class="mt-4 leading-7 text-slate-500">
+          Setas de Sivilla, Seville's wooden umbrella is not just an architectural wonder; it has become a symbol of the city's vibrant culture and innovative spirit. Visitors can explore the structure's unique design, which features a series of large, mushroom-like canopies that provide shade and shelter in the bustling Plaza de la Encarnación.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="mx-auto h-80 max-w-lg overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg"
+    style="background-image:url('tomas-malik-riuOpepmR_o-unsplash.jpg');">
+    <div class="mt-40">
+      <div class="bg-white p-4 sm:p-8">
+        <div class="font-inter text-2xl font-extrabold tracking-tight text-black">
+          The gorge of Ronda.
+        </div>
+        <div class="mt-1 text-sm font-medium text-slate-500">
+          A Natural Beauty.
+        </div>
+        <p class="mt-4 leading-7 text-slate-500">
+          The Metropol Parasol, also known as "Las Setas de la Encarnación," is a stunning architectural marvel located in the heart of Seville, Spain. This wooden structure, designed by Jürgen Mayer, is a modern addition to the city's historic landscape, offering a unique blend of contemporary design and traditional Andalusian culture.
+        </p>
+        <p class="mt-4 leading-7 text-slate-500">
+          Setas de Sivilla, Seville's wooden umbrella is not just an architectural wonder; it has become a symbol of the city's vibrant culture and innovative spirit. Visitors can explore the structure's unique design, which features a series of large, mushroom-like canopies that provide shade and shelter in the bustling Plaza de la Encarnación.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!--~~~~~~~~~~~~~~~~~ FAQ ~~~~~~~~~~~~~~~~~-->
+        <section id="faq" class="bg-gray-100 py-16">
+          <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+              <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+              <p class="text-gray-600">Find answers to common questions about our services</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">What is Global Voyage?</h3>
+                <p class="text-gray-700">Global Voyage is a travel agency that specializes in providing unique travel experiences around the world. We offer personalized itineraries, expert guides, and exceptional customer service to ensure your trip is unforgettable.</p>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">How can I book a trip with Global Voyage?</h3>
+                <p class="text-gray-700">Booking a trip with Global Voyage is easy! You can visit our website and fill out the booking form, or you can contact our customer service team directly via phone or email. We will assist you in planning your perfect trip.</p>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">What destinations do you offer?</h3>
+                <p class="text-gray-700">We offer a wide range of destinations around the world, including popular tourist spots and off-the-beaten-path locations. Whether you're looking for a beach getaway, a cultural experience, or an adventure trip, we have something for everyone.</p>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">What is your cancellation policy?</h3>
+                <p class="text-gray-700">Our cancellation policy varies depending on the specific trip and services booked. We recommend reviewing our terms and conditions or contacting our customer service team for detailed information regarding cancellations and refunds.</p>
+              </div>
+            </div>
+
+        </div>
+        </section>
+
+     <!--~~~~~~~~~~~~~~~ Review ~~~~~~~~~~~~~~~-->
+<section id="review">
+ <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+              <h2 class="text-3xl font-bold mb-4">Testimonials</h2>
+              <p class="text-gray-600">What our clients say about us</p>
+            </div>
+  </div>
+  <div>
+    <div>
+      <ul class="grid gap-8 md:grid-cols-3">
+        <li>
+          <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center h-full">
+            <p class="mb-4">
+              "The trip was amazing! I had the best time exploring Andalusia.
+              Tapas is a little part of Spain I will bring with me forever. Ronda was breathtaking and the flamenco shows were unforgettable.
+              Highly recommend Global Voyage for anyone looking to explore Spain!"
+            </p>
+            <div class="flex items-center gap-3 mt-auto">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Image" class="rounded-full w-12 h-12">
+              <div class="ml-2 text-left">
+                <h4 class="text-black-500 font-semibold">Maria Brown</h4>
+                <p class="text-gray-500 text-sm">Traveler</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center h-full">
+            <p class="mb-4">
+              "I love Seville! The architecture is stunning and the culture is rich.
+              I had a fantastic time exploring the city with Global Voyage. The guides were knowledgeable and friendly, making the experience even better.
+              Highly recommend this trip to anyone looking to explore Spain!"
+            </p>
+            <div class="flex items-center gap-3 mt-auto">
+              <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User Image" class="rounded-full w-12 h-12">
+              <div class="ml-2 text-left">
+                <h4 class="text-black-500 font-semibold">Aiden Williams</h4>
+                <p class="text-gray-500 text-sm">Influencer</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center h-full">
+            <p class="mb-4">
+              "Global Voyage made my trip unforgettable! The attention to detail and personalized service were exceptional.
+              I felt like a VIP the entire time. Highly recommend!"
+            </p>
+            <div class="flex items-center gap-3 mt-auto">
+              <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="User Image" class="rounded-full w-12 h-12">
+              <div class="ml-2 text-left">
+                <h4 class="text-black-500 font-semibold">John Adams</h4>
+                <p class="text-gray-500 text-sm">Traveler</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+    </main>
+
+    <!--~~~~~~~~~~~~~~~ Footer ~~~~~~~~~~~~~~~-->
+   <!-- Footer -->
+     <footer class="bg-gray-100 text-black">
+        <div class="container mx-auto px-14 py-4">
+            <div class="grid md:grid-cols-12 grid-cols-1 gap-4">
+                <div class="lg:col-span-6 md:col-span-12">
+                    <a href="#">
+                        <img src="https://png.pngtree.com/png-clipart/20250115/original/pngtree-airplane-logo-vector-png-image_19677986.png" alt="" class="h-12">
+                    </a>
+                    <p class="mt-6 text-black">&copy; 2025 Global Voyage. All rights reserved.</p>
+</p>
+                </div>
+                <div class="lg:col-span-2 md:col-span-4 col-span-12 text-center">
+                    <h5 class="tracking-wide text-gray-700 font-semibold">Company</h5>
+                    <ul class="list-none mt-6 space-y-2">
+                        <li><a href="#" class="hover:text-gray-400 transition-all duration-500 ease-in-out">Home</a></li>
+                        <li><a href="#" class="hover:text-gray-400 transition-all duration-500 ease-in-out">Destinations</a></li>
+                        <li><a href="#" class="hover:text-gray-400 transition-all duration-500 ease-in-out">Shop</a></li>
+                        <li><a href="#" class="hover:text-gray-400 transition-all duration-500 ease-in-out">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-3 md:col-span-4 col-span-12 text-center">
+                    <h5 class="tracking-wide text-gray-700 font-semibold">Important Links</h5>
+                    <ul class="list-none mt-6 space-y-2">
+                        <li><a href="#" class="hover:text-gray-400 transition-all duration-500 ease-in-out">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-gray-400 transition-all duration-500 ease-in-out">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-gray-400 transition-all duration-500 ease-in-out">Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+     </footer>
+</body>
+</html>
