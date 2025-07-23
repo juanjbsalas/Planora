@@ -1,6 +1,6 @@
 # 🌍 Planora
 
-**Planora** is a modern, user-centric travel website built to inspire exploration and streamline trip planning. Whether you're dreaming of your next getaway or browsing travel essentials, Global Voyage offers destination highlights, shopping options, contact information, and a seamless, responsive interface.
+**Planora** is a modern, user-centric travel website built to inspire exploration and streamline trip planning. Whether you're dreaming of your next getaway or browsing travel essentials, Planora offers destination highlights, shopping options, contact information, and a seamless, responsive interface.
 
 🔗 **Explore the site:** [https://juanjbsalas.github.io/Planora/](https://juanjbsalas.github.io/Planora/)
 
@@ -44,22 +44,6 @@
 - David Picket
 - Alanie Mejia Mendez
 - Ibrahim Mutakabbir
-
----
-
-## 📌 Getting Started
-
-To run locally:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/juanjbsalas/Global-Voyage.git
-   cd Global-Voyage
-
-   ```
-
-2. Open index.html in your browser to explore the website.
 
 ---
 
