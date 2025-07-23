@@ -1,8 +1,8 @@
-# 🌍 Global Voyage
+# 🌍 Planora
 
-**Global Voyage** is a modern, user-centric travel website built to inspire exploration and streamline trip planning. Whether you're dreaming of your next getaway or browsing travel essentials, Global Voyage offers destination highlights, shopping options, contact information, and a seamless, responsive interface.
+**Planora** is a modern, user-centric travel website built to inspire exploration and streamline trip planning. Whether you're dreaming of your next getaway or browsing travel essentials, Global Voyage offers destination highlights, shopping options, contact information, and a seamless, responsive interface.
 
-🔗 **Explore the site:** [https://juanjbsalas.github.io/Global-Voyage/](https://juanjbsalas.github.io/Global-Voyage/)
+🔗 **Explore the site:** [https://juanjbsalas.github.io/Planora/](https://juanjbsalas.github.io/Planora/)
 
 ---
 
@@ -18,32 +18,32 @@
 
 ## 📁 Folder Structure
 
-- `contact/` — Contact form and related assets  
-- `dest1/` — Sample destination page  
-- `Alaska/` — Alaska destination content  
-- `Andalusia/` — Andalusia destination content  
-- `Egypt/` — Egypt destination content  
-- `home/` — Homepage assets and layout  
-- `shop/` — Travel shop interface  
+- `contact/` — Contact form and related assets
+- `dest1/` — Sample destination page
+- `Alaska/` — Alaska destination content
+- `Andalusia/` — Andalusia destination content
+- `Egypt/` — Egypt destination content
+- `home/` — Homepage assets and layout
+- `shop/` — Travel shop interface
 - `index.html` — Root landing page
 
 ---
 
 ## 🛠️ Tech Stack
 
-- HTML5  
-- CSS & Tailwind CSS  
-- JavaScript  
-- Responsive Web Design  
+- HTML5
+- CSS & Tailwind CSS
+- JavaScript
+- Responsive Web Design
 
 ---
 
 ## 👨‍💻 Team
 
-- Juan Salas — [@juanjbsalas](https://github.com/juanjbsalas)  
-- David Picket  
-- Alanie Mejia Mendez  
-- Ibrahim Mutakabbir  
+- Juan Salas — [@juanjbsalas](https://github.com/juanjbsalas)
+- David Picket
+- Alanie Mejia Mendez
+- Ibrahim Mutakabbir
 
 ---
 
@@ -52,9 +52,12 @@
 To run locally:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/juanjbsalas/Global-Voyage.git
    cd Global-Voyage
+
+   ```
 
 2. Open index.html in your browser to explore the website.
 
@@ -70,5 +73,3 @@ Contributions are welcome and appreciated.
 ## 🪪 License
 
 📄 License information coming soon.
-
-
