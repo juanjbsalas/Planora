@@ -15,12 +15,12 @@ const getAccessToken = async () => {
   return data.access_token;
 };
 
-// A being departure,b being destination and t being date.
-
-const fetchFlightOffers = async (a, b, t) => {
+// a being departure,b being destination and t being date.
+// ! Figure out the onclick fetch, also figure out how to convert cities to location codes.
+const fetchFlightOffers = async (x, y, z) => {
     const token = await getAccessToken();
 
-    const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=CLT&destinationLocationCode=NYC&departureDate=2025-08-10&adults=1', {
+    const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${x}&destinationLocationCode=${y}&departureDate=${z}&adults=1`, {
         method: 'GET',
         headers: {
         'Authorization': `Bearer ${token}`,
@@ -69,4 +69,48 @@ const fetchFlightOffers = async (a, b, t) => {
 
 };
 
-// fetchFlightOffers();
+const searchAirport = async (cityKeyword) => {
+    const token = await getAccessToken();
+
+    const url = `https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY,AIRPORT&keyword=${cityKeyword}`;
+
+    const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${token}`,
+    },
+    });
+
+    const data = await response.json();
+    // console.log(data);
+    return data;
+};
+
+
+async function everything() {
+    let a = document.getElementById('depart-destination').value.trim();
+    let b = document.getElementById('arrival-destination').value.trim();
+    let t = document.getElementById('date-picker').value.trim();
+
+    let dest = await searchAirport(a);
+    dest = dest.data[0]['iataCode'];
+    // console.log(dest);
+
+    let arrival = await searchAirport(b);
+    arrival = arrival.data[0]['iataCode'];
+    // console.log(arrival);
+
+    let date = convertDate(t); // Returns a string with the date
+
+    //Call function to fetch the flight offers.
+
+    fetchFlightOffers(dest, arrival, date);
+}
+
+function convertDate(dateString) {
+    const parts = dateString.split('/'); // Splits "MM/DD/YYYY" into ["MM", "DD", "YYYY"]
+    const formattedDate = `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearranges to YYYY-MM-DD
+    return formattedDate;
+}
+
+everything();
