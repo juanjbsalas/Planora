@@ -15,7 +15,9 @@ const getAccessToken = async () => {
   return data.access_token;
 };
 
-const fetchFlightOffers = async () => {
+// A being departure,b being destination and t being date.
+
+const fetchFlightOffers = async (a, b, t) => {
     const token = await getAccessToken();
 
     const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=CLT&destinationLocationCode=NYC&departureDate=2025-08-10&adults=1', {
@@ -67,4 +69,4 @@ const fetchFlightOffers = async () => {
 
 };
 
-fetchFlightOffers();
+// fetchFlightOffers();
