@@ -20,6 +20,7 @@ const getAccessToken = async () => {
 const fetchFlightOffers = async (x, y, z) => {
     const token = await getAccessToken();
 
+    console.log(`About to fetch flights from ${x} to ${y} on ${z}`);
     const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${x}&destinationLocationCode=${y}&departureDate=${z}&adults=1`, {
         method: 'GET',
         headers: {
@@ -34,6 +35,12 @@ const fetchFlightOffers = async (x, y, z) => {
     
     const resultsContainer = document.getElementById('results');
 
+    // Checking if data is erroneous
+    if (!data || !data.data || !Array.isArray(data.data)) {
+        console.error("Invalid flight data response:", data);
+        return;
+    }
+    
     data.data.forEach((offer) => {
     const price = offer.price.total;
     const currency = offer.price.currency;
@@ -93,10 +100,19 @@ async function everything() {
     let t = document.getElementById('date-picker').value.trim();
 
     let dest = await searchAirport(a);
+    if(!dest.data || dest.data === 0){
+        alert(`Could not find airport code for ${a}`);
+        return; //It is ending the function and returning nothing.
+    }
+
     dest = dest.data[0]['iataCode'];
-    // console.log(dest);
 
     let arrival = await searchAirport(b);
+    if(!arrival.data || arrival.length === 0){
+        alert(`Could not find airport code for ${b}`);
+        return;
+    }
+
     arrival = arrival.data[0]['iataCode'];
     // console.log(arrival);
 
@@ -105,6 +121,9 @@ async function everything() {
     //Call function to fetch the flight offers.
 
     fetchFlightOffers(dest, arrival, date);
+
+    console.log("Derparture search results: ", dest);    
+    console.log("Arrival search results: ", arrival);    
 }
 
 function convertDate(dateString) {
@@ -112,5 +131,6 @@ function convertDate(dateString) {
     const formattedDate = `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearranges to YYYY-MM-DD
     return formattedDate;
 }
+
 
 everything();
