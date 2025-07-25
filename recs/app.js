@@ -29,9 +29,9 @@ const fetchFlightOffers = async (x, y, z) => {
     });
 
     const data = await response.json();
-    console.log("It is running!");
+    // console.log("It is running!");
     console.log(data);
-    console.log("---------------------------");
+    // console.log("---------------------------");
     
     const resultsContainer = document.getElementById('results');
 
@@ -41,36 +41,47 @@ const fetchFlightOffers = async (x, y, z) => {
         return;
     }
     
+    // ! Debug line:
+    console.log("Total flight data from Amadeus API: ", data);
+
     data.data.forEach((offer) => {
-    const price = offer.price.total;
-    const currency = offer.price.currency;
-    const itinerary = offer.itineraries[0]; // outbound only
-    const segment = itinerary.segments[0];
+        const price = offer.price.total;
+        const currency = offer.price.currency;
+        const itinerary = offer.itineraries[0]; // outbound only
 
-    const departureAirport = segment.departure.iataCode;
-    const departureTime = segment.departure.at;
-    const arrivalAirport = segment.arrival.iataCode;
-    const arrivalTime = segment.arrival.at;
-    const airline = segment.carrierCode;
-    const duration = segment.duration;
+        if (itinerary.segment.length > 1) {
+            // create route variable and append data from one airport to another.
+        } 
+        else {
+            const departureAirport = segment.departure.iataCode;
+            const departureTime = segment.departure.at;
+            const arrivalAirport = segment.arrival.iataCode;
+            const arrivalTime = segment.arrival.at;
+            const airline = segment.carrierCode;
+            const duration = segment.duration;            
+        }
 
-    const card = document.createElement('div');
-    card.className = 'bg-white rounded-xl shadow-md p-6 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0';
+        const segment = itinerary.segments[0];
 
-    card.innerHTML = `
-        <div>
-            <h2 class="text-xl font-semibold mb-2">${departureAirport} → ${arrivalAirport}</h2>
-            <p class="text-gray-600">Departure: ${new Date(departureTime).toLocaleString()}</p>
-            <p class="text-gray-600">Arrival: ${new Date(arrivalTime).toLocaleString()}</p>
-            <p class="text-gray-600">Duration: ${duration.replace("PT", "").toLowerCase()}</p>
-            <p class="text-gray-600">Airline: ${airline}</p>
+
+
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-xl shadow-md p-6 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0';
+
+        card.innerHTML = `
+            <div>
+                <h2 class="text-xl font-semibold mb-2">${departureAirport} → ${arrivalAirport}</h2>
+                <p class="text-gray-600">Departure: ${new Date(departureTime).toLocaleString()}</p>
+                <p class="text-gray-600">Arrival: ${new Date(arrivalTime).toLocaleString()}</p>
+                <p class="text-gray-600">Duration: ${duration.replace("PT", "").toLowerCase()}</p>
+                <p class="text-gray-600">Airline: ${airline}</p>
+                </div>
+                <div class="text-right">
+                <p class="text-2xl font-bold text-blue-600">${currency} ${price}</p>
             </div>
-            <div class="text-right">
-            <p class="text-2xl font-bold text-blue-600">${currency} ${price}</p>
-        </div>
-    `;
+        `;
 
-    resultsContainer.appendChild(card);
+        resultsContainer.appendChild(card);
     });
 
 
