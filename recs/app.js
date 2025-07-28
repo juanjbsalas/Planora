@@ -6,6 +6,8 @@
 //   return data.access_token;
 // };
 
+
+// Fetches an OAuth2 access token from the Amadeus API using client credentials
 const getAccessToken = async () => {
   const response = await fetch('https://test.api.amadeus.com/v1/security/oauth2/token', {
     method: 'POST',
@@ -14,17 +16,18 @@ const getAccessToken = async () => {
     },
     body: new URLSearchParams({
       grant_type: 'client_credentials',
-      client_id: 'zVvm3LYanXpnzdo8ho76sTwGVWzREeEJ', // I need to hide this somehow from the fronted
-      client_secret: 'Y4jpXJLW5bkYS33L', // I need to hide this somehow from the frontend
+      client_id: 'zVvm3LYanXpnzdo8ho76sTwGVWzREeEJ',
+      client_secret: 'Y4jpXJLW5bkYS33L', 
+      // TODO: Move credentials to a secure backend to avoid exposing secrets in frontend code
     })
   });
 
   const data = await response.json();
+  // Returns the access token to be used in subsequent authenticated API requests
   return data.access_token;
 };
 
-// a being departure,b being destination and t being date.
-// ! Figure out the onclick fetch, also figure out how to convert cities to location codes.
+// Fetches flight offers from the Amadeus API using origin (x), destination (y), and date (z)
 const fetchFlightOffers = async (x, y, z) => {
     const token = await getAccessToken();
 
@@ -37,13 +40,12 @@ const fetchFlightOffers = async (x, y, z) => {
     });
 
     const data = await response.json();
-    // console.log("It is running!");
+    // Prints the raw response for debugging:
     console.log(data);
-    // console.log("---------------------------");
     
     const resultsContainer = document.getElementById('results');
 
-    // Checking if data is erroneous
+    // Validates API response structure before processing flight data
     if (!data || !data.data || !Array.isArray(data.data)) {
         console.error("Invalid flight data response:", data);
         return;
@@ -52,6 +54,7 @@ const fetchFlightOffers = async (x, y, z) => {
     // ! Debug line:
     console.log("Total flight data from Amadeus API: ", data);
 
+    // Loops through each flight offer and builds a UI card for display
     data.data.forEach((offer) => {
 
 
@@ -77,7 +80,7 @@ const fetchFlightOffers = async (x, y, z) => {
         duration = itinerary.duration || firstSegment.duration || '';
 
 
-
+        // Dynamically creates and styles a card element for each flight offer
         const card = document.createElement('div');
         card.className = 'bg-white rounded-xl shadow-md p-6 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0';
 
@@ -96,10 +99,9 @@ const fetchFlightOffers = async (x, y, z) => {
 
         resultsContainer.appendChild(card);
     });
-
-
 };
 
+// Searches for city names and converts them to city codes based on a user-provided keyword
 const searchAirport = async (cityKeyword) => {
     const token = await getAccessToken();
 
@@ -114,42 +116,45 @@ const searchAirport = async (cityKeyword) => {
 
     const data = await response.json();
     // console.log(data);
+
+    // Returns the full data object to extract IATA codes in the calling function
     return data;
 };
 
+// Main function triggered on form submission; orchestrates airport lookup and flight search
+async function handleFlightSearch() {
+    let x = document.getElementById('depart-destination').value.trim();
+    let y = document.getElementById('arrival-destination').value.trim();
+    let z = document.getElementById('date-picker').value.trim();
 
-async function everything() {
-    let a = document.getElementById('depart-destination').value.trim();
-    let b = document.getElementById('arrival-destination').value.trim();
-    let t = document.getElementById('date-picker').value.trim();
-
-    let dest = await searchAirport(a);
+    let dest = await searchAirport(x);
+    // Handle case where airport/city is not found
     if(!dest.data || dest.data === 0){
-        alert(`Could not find airport code for ${a}`);
+        alert(`Could not find airport code for ${x}`);
         return; //It is ending the function and returning nothing.
     }
 
     dest = dest.data[0]['iataCode'];
 
-    let arrival = await searchAirport(b);
+    let arrival = await searchAirport(y);
     if(!arrival.data || arrival.data.length === 0){
-        alert(`Could not find airport code for ${b}`);
+        alert(`Could not find airport code for ${y}`);
         return;
     }
 
     arrival = arrival.data[0]['iataCode'];
-    // console.log(arrival);
 
-    let date = convertDate(t); // Returns a string with the date
+    // Format the user-selected date into YYYY-MM-DD format
+    let date = convertDate(z); 
 
-    //Call function to fetch the flight offers.
-
+    // Calls function to fetch and display flight offers using processed input
     fetchFlightOffers(dest, arrival, date);
 
     console.log("Derparture search results: ", dest);    
     console.log("Arrival search results: ", arrival);    
 }
 
+// Converts a date string from MM/DD/YYYY to YYYY-MM-DD format for Amadeus API compatibility
 function convertDate(dateString) {
     const parts = dateString.split('/'); // Splits "MM/DD/YYYY" into ["MM", "DD", "YYYY"]
     const formattedDate = `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearranges parts array to YYYY-MM-DD
