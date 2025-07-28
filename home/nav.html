@@ -1,35 +1,54 @@
-<nav class="bg-gray-100 px-8 py-7">
-    <div class="flex justify-between items-center">
-        <a href="#" class="text-3xl font-bold z-60">Global Voyage</a>
-        <!-- <img src="" alt=""> -->
-        <div class="hidden md:flex space-x-4">
-            <a href="https://juanjbsalas.github.io/travel-dest/" class="hover:bg-sky-400 px-3 py-2 rounded">Home</a>
-            <a href="#" class="hover:bg-sky-400 px-3 py-2 rounded">Destinations</a>
-            <a href="https://juanjbsalas.github.io/travel-dest/shop" class="hover:bg-sky-400 px-3 py-2 rounded">Shop</a>
-            <a href="https://juanjbsalas.github.io/travel-dest/contact" class="hover:bg-sky-400 px-3 py-2 rounded">Contact</a>
+<!-- Navbar Here -->
+<section id="navbar">
+    <nav class="bg-gray-100 px-8 py-7">
+        <div class="flex justify-between items-center">
+            <a href="#" class="text-5xl font-bold z-60 tangerine-bold">Planora</a>
+            <!-- <img src="" alt=""> -->
+            <div class="hidden md:flex space-x-4">
+                <a href="/" class="hover:bg-[#005FA3] px-3 py-2 rounded">Home</a>
+                <a href="/dest1/" class="hover:bg-[#005FA3] px-3 py-2 rounded">Destinations</a>
+                <a href="/shop/" class="hover:bg-[#005FA3] px-3 py-2 rounded">Shop</a>
+                <a href="/contact/" class="hover:bg-[#005FA3] px-3 py-2 rounded">Contact</a>
+                <a href="/flights/" class="hover:bg-[#005FA3] px-3 py-2 rounded">Flights</a>
+            </div>
+            <div class="hidden md:inline-block">
+                <a href="../contact" class="px-4 py-2">
+                    <i class="fa fa-phone"></i>
+                </a>
+            </div>
+            <!-- Hamburguer Menu -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-black">
+                    <i id="menu-icon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </div>
-        <div class="hidden md:inline-block">
-            <a href="#" class="px-4 py-2">
-                <i class="fa fa-phone"></i>
-            </a>
-        </div>
-        <!-- Hamburguer Menu -->
-        <div class="md:hidden">
-            <button id="menu-toggle" class="text=black">
-                <i id="menu-icon" class="fa-solid fa-bars"></i>
-            </button>
+    </nav>
+
+    <!-- Mobile View! -->
+    <div id="mobile-menu"
+        class="hidden fixed inset-0 z-50 flex flex-col items-center justify-center bg-opacity-90 md:hidden bg-gray-100 w-1/2 h-1/3 float-end mt-2 me-2 py-4 rounded-md shadow-lg ">
+        <div class="flex flex-col items-center text-center text-black space-y-4 px-4 py-2">
+            <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded nav-link">Home</a>
+            <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded nav-link">Destinations</a>
+            <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded nav-link">Shop</a>
+            <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded nav-link">Contact</a>
         </div>
     </div>
-</nav>
+    <script>
+        const toggleButton = document.getElementById('menu-toggle');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        toggleButton.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+
+            if (menuIcon.classList.contains('fa-bars')) {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    </script>
+</section>
 <!-- Nav Bar ends here -->
-
-<!-- Mobile View! -->
-<div id="mobile-menu" class="hidden fixed inset-0 z-50 flex flex-col items-center justify-center bg-opacity-90 md:hidden bg-gray-100 w-1/2 h-1/3 float-end mt-2 me-2 py-4 rounded-md shadow-lg " >
-    <div class="flex flex-col items-center text-center text-black space-y-4 px-4 py-2">
-        <a href="http://google.com/" class="w-full hover:bg-sky-400 px-3 py-2 rounded">Home</a>
-        <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded">Destinations</a>
-        <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded">Shop</a>
-        <a href="#" class="w-full hover:bg-sky-400 px-3 py-2 rounded">Contact</a>
-    </div>
-</div>
-
