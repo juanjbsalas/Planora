@@ -1,3 +1,11 @@
+
+// // ! Needs to be fixed
+// const getAccessToken = async () => {
+//   const response = await fetch('http://localhost:5000/api/token');
+//   const data = await response.json();
+//   return data.access_token;
+// };
+
 const getAccessToken = async () => {
   const response = await fetch('https://test.api.amadeus.com/v1/security/oauth2/token', {
     method: 'POST',

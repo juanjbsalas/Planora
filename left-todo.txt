@@ -1,6 +1,8 @@
 To - Do
 
 - Add spin button when looking for flights
+- Ensure page is responsive
+- Only take dates on the future
 - Ensure footer is always at the bottom
 - Make sure footer is always at the bottom
 - Hide key for API.
