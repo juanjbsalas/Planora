@@ -152,9 +152,17 @@ async function everything() {
 
 function convertDate(dateString) {
     const parts = dateString.split('/'); // Splits "MM/DD/YYYY" into ["MM", "DD", "YYYY"]
-    const formattedDate = `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearranges to YYYY-MM-DD
+    const formattedDate = `${parts[2]}-${parts[0]}-${parts[1]}`; // Rearranges parts array to YYYY-MM-DD
     return formattedDate;
 }
 
 
-// everything();
+//  Date Restriciton
+// const today = new Date();
+// const year = today.getFullYear();
+// const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+// const day = String(today.getDate()).padStart(2, '0');
+
+// const minDate = `${year}/${month}/${day}`;
+
+// document.getElementById('date-picker').setAttribute('min', minDate);
