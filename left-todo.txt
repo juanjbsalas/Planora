@@ -1,8 +1,11 @@
 To - Do
 
-- Make sure that textboxes work
+- Make sure footer is always at the bottom
 - Hide key for API.
 - Add full route to cards on a details dropdown.
 - If there are layover or connecting flights, display that on the card.
 - Add nav bar to page
 - Comment out code.
+
+Done:
+- Make sure that textboxes work
