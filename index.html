@@ -23,6 +23,14 @@
 <body class="flex flex-col min-h-screen">
     <!-- Navbar Here -->
     <section id="navbar-placeholder">
+        <!-- Nav bar stuff -->
+        <script>
+            fetch('/home/nav.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                });
+        </script>
     </section>
     <!-- Nav Bar ends here -->
 
@@ -84,16 +92,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Nav bar stuff -->
-    <script>
-        fetch('/home/nav.html')
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            });
-    </script>
-
 </body>
 
 </html>
