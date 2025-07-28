@@ -162,6 +162,8 @@ function convertDate(dateString) {
     return formattedDate;
 }
 
+document.querySelector('#submit-button').addEventListener('click', handleFlightSearch);
+
 
 //  Date Restriciton
 // const today = new Date();
