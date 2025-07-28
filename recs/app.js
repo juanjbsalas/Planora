@@ -45,23 +45,66 @@ const fetchFlightOffers = async (x, y, z) => {
     console.log("Total flight data from Amadeus API: ", data);
 
     data.data.forEach((offer) => {
+        // const price = offer.price.total;
+        // const currency = offer.price.currency;
+        // const itinerary = offer.itineraries[0]; // outbound only
+
+        // let route, departureTime, arrivalTime, airline, duration;
+
+
+        // if (itinerary.segments.length > 1) {
+        //     let routeList = [];
+        //     // create route variable and append data from one airport to another.
+        //     const flightLength = itinerary.segments.length;
+
+        //     for (let i = 0; i < flightLength; i++){
+        //         if (i === flightLength - 1) {
+        //             routeList.push(itinerary.segments[i]['arrival']['iataCode']);
+        //         }
+        //         else {
+        //             routeList.push(itinerary.segments[i]['departure']['iataCode']);
+        //         }
+        //     }
+        //     const route = routeList.join(' → ');
+            
+        //     // Departure and Arrival Time
+        //     const departureTime = itinerary.segments[0].departure.at;
+        //     const arrivalTime = itinerary.segments[flightLength - 1].arrival.at
+        //     const airline = itinerary.segments[0].carrierCode;
+        //     const duration = itinerary.duration || itinerary.segments[0]?.duration || "";
+
+        // } 
+        // else {
+        //     const segment = itinerary.segments[0];
+        //     const departureAirport = segment.departure.iataCode;
+        //     const departureTime = segment.departure.at;
+        //     const arrivalAirport = segment.arrival.iataCode;
+        //     const arrivalTime = segment.arrival.at;
+        //     const airline = segment.carrierCode;
+        //     const duration = segment.duration;   
+        //     const route = `${departureAirport} → ${arrivalAirport}`;
+        // }
+
         const price = offer.price.total;
         const currency = offer.price.currency;
         const itinerary = offer.itineraries[0]; // outbound only
 
-        if (itinerary.segment.length > 1) {
-            // create route variable and append data from one airport to another.
-        } 
-        else {
-            const departureAirport = segment.departure.iataCode;
-            const departureTime = segment.departure.at;
-            const arrivalAirport = segment.arrival.iataCode;
-            const arrivalTime = segment.arrival.at;
-            const airline = segment.carrierCode;
-            const duration = segment.duration;            
-        }
+        let route, departureTime, arrivalTime, airline, duration;
 
-        const segment = itinerary.segments[0];
+        const segments = itinerary.segments;
+        const flightLength = segments.length;
+
+        const firstSegment = segments[0];
+        const lastSegment = segments[flightLength - 1];
+
+        const departureAirport = firstSegment.departure.iataCode;
+        const arrivalAirport = lastSegment.arrival.iataCode;
+        route = `${departureAirport} → ${arrivalAirport}`;
+
+        departureTime = firstSegment.departure.at;
+        arrivalTime = lastSegment.arrival.at;
+        airline = firstSegment.carrierCode;
+        duration = itinerary.duration || firstSegment.duration || '';
 
 
 
@@ -70,10 +113,10 @@ const fetchFlightOffers = async (x, y, z) => {
 
         card.innerHTML = `
             <div>
-                <h2 class="text-xl font-semibold mb-2">${departureAirport} → ${arrivalAirport}</h2>
+                <h2 class="text-xl font-semibold mb-2">${route}</h2>
                 <p class="text-gray-600">Departure: ${new Date(departureTime).toLocaleString()}</p>
                 <p class="text-gray-600">Arrival: ${new Date(arrivalTime).toLocaleString()}</p>
-                <p class="text-gray-600">Duration: ${duration.replace("PT", "").toLowerCase()}</p>
+                <p class="text-gray-600">Duration: ${duration ? duration.replace("PT", "").toLowerCase() : "N/A" }</p>
                 <p class="text-gray-600">Airline: ${airline}</p>
                 </div>
                 <div class="text-right">
@@ -119,7 +162,7 @@ async function everything() {
     dest = dest.data[0]['iataCode'];
 
     let arrival = await searchAirport(b);
-    if(!arrival.data || arrival.length === 0){
+    if(!arrival.data || arrival.data.length === 0){
         alert(`Could not find airport code for ${b}`);
         return;
     }
