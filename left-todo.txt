@@ -1,5 +1,7 @@
 To - Do
 
+- Add spin button when looking for flights
+- Ensure footer is always at the bottom
 - Make sure footer is always at the bottom
 - Hide key for API.
 - Add full route to cards on a details dropdown.

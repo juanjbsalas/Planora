@@ -18,7 +18,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
     <!-- Navbar Here -->
     <section id="navbar">
         <nav class="bg-gray-100 px-8 py-7">
@@ -74,13 +74,11 @@
     </section>
     <!-- Nav Bar ends here -->
 
-    <main>
-        <!-- <h1>Planora</h1> -->
-
+    <main class="flex-grow flex flex-col items-center pt-1">
         <!-- Travel Form -->
 
-        <form action="" onsubmit="return false">
-            <div class="grid gap-6 mb-6 md:grid-cols-4">
+        <form action="" onsubmit="return false" class="flex justify-center">
+            <div class="grid gap-6 mb-6 md:grid-cols-4 items-end w-full max-w-5xl">
                 <!-- From Column -->
                 <div>
                     <label for="depart_destination"
@@ -116,7 +114,8 @@
 
                 <!-- Submit Column-->
                 <div>
-                    <button type="button" onclick="everything()">Submit</button>
+                    <button type="button" onclick="everything()"
+                        class="w-full bg-blue-600 text-white font-medium rounded-lg px-5 py-2.5 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 transition-all duration-300">Submit</button>
                 </div>
             </div>
             <!-- <div class="relative max-w-sm">
@@ -135,8 +134,8 @@
         </form>
 
         <!-- Result Cards Container -->
-        <div id="results" class="space-y-4">
-
+        <div id="results" class="mt-10 space-y-4">
+            <!-- Cards will be in here -->
 
         </div>
 
