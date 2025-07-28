@@ -9,9 +9,10 @@ To - Do
 - Hide key for API.
 - Add full route to cards on a details dropdown.
 - If there are layover or connecting flights, display that on the card.
-- Add nav bar to page
-- Comment out code.
-- Pull all images into assets folders
 
 Done:
 - Make sure that textboxes work
+- Pull all images into assets folders
+- Comment out code.
+- Add nav bar to page
+
