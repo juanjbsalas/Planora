@@ -122,7 +122,8 @@ const searchAirport = async (cityKeyword) => {
 };
 
 // Main function triggered on form submission; orchestrates airport lookup and flight search
-async function handleFlightSearch() {
+// async function handleFlightSearch() {
+window.handleFlightSearch = async function () {
     let x = document.getElementById('depart-destination').value.trim();
     let y = document.getElementById('arrival-destination').value.trim();
     let z = document.getElementById('date-picker').value.trim();
@@ -152,7 +153,7 @@ async function handleFlightSearch() {
 
     console.log("Derparture search results: ", dest);    
     console.log("Arrival search results: ", arrival);    
-}
+};
 
 // Converts a date string from MM/DD/YYYY to YYYY-MM-DD format for Amadeus API compatibility
 function convertDate(dateString) {
