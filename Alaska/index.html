@@ -22,29 +22,17 @@
 
 <body>
   <!-- Navbar Here -->
-  <nav class="bg-gray-100 px-8 py-7">
-    <div class="flex justify-between items-center">
-      <a href="#" class="text-5xl font-bold z-60 tangerine-bold">Planora</a>
-      <!-- <img src="" alt=""> -->
-      <div class="hidden md:flex space-x-4">
-        <a href="../" class="hover:bg-[#005FA3] px-3 py-2 rounded">Home</a>
-        <a href="../dest1" class="hover:bg-[#005FA3] px-3 py-2 rounded">Destinations</a>
-        <a href="../shop" class="hover:bg-[#005FA3] px-3 py-2 rounded">Shop</a>
-        <a href="../contact" class="hover:bg-[#005FA3] px-3 py-2 rounded">Contact</a>
-      </div>
-      <div class="hidden md:inline-block">
-        <a href="../contact" class="px-4 py-2">
-          <i class="fa fa-phone"></i>
-        </a>
-      </div>
-      <!-- Hamburguer Menu -->
-      <div class="md:hidden">
-        <button id="menu-toggle" class="text-black">
-          <i id="menu-icon" class="fa-solid fa-bars"></i>
-        </button>
-      </div>
-    </div>
-  </nav>
+  <section id="navbar-placeholder">
+    <!-- Nav bar stuff -->
+    <script>
+      fetch('/home/nav.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+    </script>
+  </section>
+  <!-- Nav Bar ends here -->
 
   <!-- Mobile View! -->
   <div id="mobile-menu"

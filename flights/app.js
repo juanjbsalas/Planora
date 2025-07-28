@@ -98,6 +98,10 @@ const fetchFlightOffers = async (x, y, z) => {
         `;
 
         resultsContainer.appendChild(card);
+
+        // Handles the spinner button
+        document.getElementById('submit-button').classList.remove('hidden');
+        document.getElementById('spinner').classList.add('hidden');
     });
 };
 
@@ -135,6 +139,10 @@ window.handleFlightSearch = async function () {
         return; //It is ending the function and returning nothing.
     }
 
+    // Handles the spinner button
+    document.getElementById('submit-button').classList.add('hidden');
+    document.getElementById('spinner').classList.remove('hidden');
+
     dest = dest.data[0]['iataCode'];
 
     let arrival = await searchAirport(y);
@@ -163,6 +171,8 @@ function convertDate(dateString) {
 }
 
 document.querySelector('#submit-button').addEventListener('click', handleFlightSearch);
+
+
 
 
 //  Date Restriciton
