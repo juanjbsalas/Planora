@@ -6,6 +6,7 @@ To - Do
 - If there are layover or connecting flights, display that on the card.
 - Add nav bar to page
 - Comment out code.
+- Pull all images into assets folders
 
 Done:
 - Make sure that textboxes work
