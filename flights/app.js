@@ -28,11 +28,11 @@ const getAccessToken = async () => {
 };
 
 // Fetches flight offers from the Amadeus API using origin (x), destination (y), and date (z)
-const fetchFlightOffers = async (x, y, z) => {
+const fetchFlightOffers = async (departure, arrival, date) => {
     const token = await getAccessToken();
 
-    console.log(`About to fetch flights from ${x} to ${y} on ${z}`);
-    const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${x}&destinationLocationCode=${y}&departureDate=${z}&adults=1`, {
+    console.log(`About to fetch flights from ${departure} to ${arrival} on ${date}`);
+    const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${departure}&destinationLocationCode=${arrival}&departureDate=${date}&adults=1`, {
         method: 'GET',
         headers: {
         'Authorization': `Bearer ${token}`,
@@ -126,18 +126,20 @@ const searchAirport = async (cityKeyword) => {
     return data;
 };
 
-// Main function triggered on form submission; orchestrates airport lookup and flight search
+// Main function triggered on form submission; calls airport lookup and flight search
 // async function handleFlightSearch() {
 window.handleFlightSearch = async function () {
-    let x = document.getElementById('depart-destination').value.trim();
-    let y = document.getElementById('arrival-destination').value.trim();
-    let z = document.getElementById('date-picker').value.trim();
+    let a = document.getElementById('depart-destination').value.trim();
+    let b = document.getElementById('arrival-destination').value.trim();
+    let t = document.getElementById('date-picker').value.trim();
 
-    let dest = await searchAirport(x);
-    console.log('Dest', dest);
+    // Origin location is the same as dest
+    let departure = await searchAirport(a);
+    console.log('Dest', departure);
+
     // Handle case where airport/city is not found
-    if(!dest.data || dest.data === 0){
-        alert(`Could not find airport code for ${x}`);
+    if(!departure.data || departure.data === 0){
+        alert(`Could not find airport code for ${a}`);
         return; //It is ending the function and returning nothing.
     }
 
@@ -145,24 +147,25 @@ window.handleFlightSearch = async function () {
     document.getElementById('submit-button').classList.add('hidden');
     document.getElementById('spinner').classList.remove('hidden');
 
-    dest = dest.data[0]['iataCode'];
-    console.log('dest:', dest);
+    departure = departure.data[0]['iataCode'];
+    console.log('dest:', departure);
 
-    let arrival = await searchAirport(y);
+    let arrival = await searchAirport(b);
+    // If airport is not found
     if(!arrival.data || arrival.data.length === 0){
-        alert(`Could not find airport code for ${y}`);
+        alert(`Could not find airport code for ${b}`);
         return;
     }
 
     arrival = arrival.data[0]['iataCode'];
 
     // Format the user-selected date into YYYY-MM-DD format
-    let date = convertDate(z); 
+    let date = convertDate(t); 
 
     // Calls function to fetch and display flight offers using processed input
-    fetchFlightOffers(dest, arrival, date);
+    fetchFlightOffers(departure, arrival, date);
 
-    console.log("Derparture search results: ", dest);    
+    console.log("Derparture search results: ", departure);    
     console.log("Arrival search results: ", arrival);    
 };
 
@@ -174,16 +177,3 @@ function convertDate(dateString) {
 }
 
 document.querySelector('#submit-button').addEventListener('click', handleFlightSearch);
-
-
-
-
-//  Date Restriciton
-// const today = new Date();
-// const year = today.getFullYear();
-// const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-// const day = String(today.getDate()).padStart(2, '0');
-
-// const minDate = `${year}/${month}/${day}`;
-
-// document.getElementById('date-picker').setAttribute('min', minDate);
