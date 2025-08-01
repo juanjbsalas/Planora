@@ -120,6 +120,7 @@ const searchAirport = async (cityKeyword) => {
 
     const data = await response.json();
     // console.log(data);
+    console.log('Data of SearchAirport function', data);
 
     // Returns the full data object to extract IATA codes in the calling function
     return data;
@@ -133,6 +134,7 @@ window.handleFlightSearch = async function () {
     let z = document.getElementById('date-picker').value.trim();
 
     let dest = await searchAirport(x);
+    console.log('Dest', dest);
     // Handle case where airport/city is not found
     if(!dest.data || dest.data === 0){
         alert(`Could not find airport code for ${x}`);
@@ -144,6 +146,7 @@ window.handleFlightSearch = async function () {
     document.getElementById('spinner').classList.remove('hidden');
 
     dest = dest.data[0]['iataCode'];
+    console.log('dest:', dest);
 
     let arrival = await searchAirport(y);
     if(!arrival.data || arrival.data.length === 0){
