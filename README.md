@@ -2,7 +2,7 @@
 
 **Planora** is a modern, user-centric travel website built to inspire exploration and streamline trip planning. Whether you're dreaming of your next getaway or browsing travel essentials, Planora offers destination highlights, shopping options, contact information, and a seamless, responsive interface.
 
-🔗 **Explore the site:** [https://juanjbsalas.github.io/Planora/](https://juanjbsalas.github.io/Planora/)
+🔗 **Explore the site:** [https://planora-fawn.vercel.app/](https://planora-fawn.vercel.app/)
 
 ---
 
